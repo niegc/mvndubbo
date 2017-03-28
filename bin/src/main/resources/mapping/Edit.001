@@ -1,0 +1,7 @@
+./build.ksh <CTE/CTE2/STE/PROD>  <all(carme,car) ,qifu,bdes>
+carme: passport,backend,ums,payment
+
+car: carmall carmanager
+
+./build.ksh STE carmall
+

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ngc.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.ngc.entity.Student">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="is_train" jdbcType="VARCHAR" property="isTrain" />
+    <result column="train_subject" jdbcType="VARCHAR" property="trainSubject" />
+    <result column="is_match" jdbcType="VARCHAR" property="isMatch" />
+    <result column="class_ranks" jdbcType="VARCHAR" property="classRanks" />
+    <result column="match_subject" jdbcType="VARCHAR" property="matchSubject" />
+    <result column="e_school_id" jdbcType="BIGINT" property="eSchoolId" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="student_num" jdbcType="VARCHAR" property="studentNum" />
+    <result column="class_num" jdbcType="VARCHAR" property="classNum" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="changed_at" jdbcType="TIMESTAMP" property="changedAt" />
+    <result column="changed_by" jdbcType="VARCHAR" property="changedBy" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="experience" jdbcType="BIGINT" property="experience" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, avatar, grade, is_train, train_subject, is_match, class_ranks, match_subject, 
+    e_school_id, real_name, sex, student_num, class_num, is_delete, created_at, created_by, 
+    changed_at, changed_by, nick_name, experience
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_student
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from e_student
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ngc.entity.Student">
+    insert into e_student (id, user_id, avatar, 
+      grade, is_train, train_subject, 
+      is_match, class_ranks, match_subject, 
+      e_school_id, real_name, sex, 
+      student_num, class_num, is_delete, 
+      created_at, created_by, changed_at, 
+      changed_by, nick_name, experience
+      )
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{avatar,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=VARCHAR}, #{isTrain,jdbcType=VARCHAR}, #{trainSubject,jdbcType=VARCHAR}, 
+      #{isMatch,jdbcType=VARCHAR}, #{classRanks,jdbcType=VARCHAR}, #{matchSubject,jdbcType=VARCHAR}, 
+      #{eSchoolId,jdbcType=BIGINT}, #{realName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{studentNum,jdbcType=VARCHAR}, #{classNum,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{changedAt,jdbcType=TIMESTAMP}, 
+      #{changedBy,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{experience,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ngc.entity.Student">
+    insert into e_student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="isTrain != null">
+        is_train,
+      </if>
+      <if test="trainSubject != null">
+        train_subject,
+      </if>
+      <if test="isMatch != null">
+        is_match,
+      </if>
+      <if test="classRanks != null">
+        class_ranks,
+      </if>
+      <if test="matchSubject != null">
+        match_subject,
+      </if>
+      <if test="eSchoolId != null">
+        e_school_id,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="studentNum != null">
+        student_num,
+      </if>
+      <if test="classNum != null">
+        class_num,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="changedAt != null">
+        changed_at,
+      </if>
+      <if test="changedBy != null">
+        changed_by,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="experience != null">
+        experience,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="isTrain != null">
+        #{isTrain,jdbcType=VARCHAR},
+      </if>
+      <if test="trainSubject != null">
+        #{trainSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="isMatch != null">
+        #{isMatch,jdbcType=VARCHAR},
+      </if>
+      <if test="classRanks != null">
+        #{classRanks,jdbcType=VARCHAR},
+      </if>
+      <if test="matchSubject != null">
+        #{matchSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="eSchoolId != null">
+        #{eSchoolId,jdbcType=BIGINT},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNum != null">
+        #{studentNum,jdbcType=VARCHAR},
+      </if>
+      <if test="classNum != null">
+        #{classNum,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="changedAt != null">
+        #{changedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changedBy != null">
+        #{changedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        #{experience,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ngc.entity.Student">
+    update e_student
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="isTrain != null">
+        is_train = #{isTrain,jdbcType=VARCHAR},
+      </if>
+      <if test="trainSubject != null">
+        train_subject = #{trainSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="isMatch != null">
+        is_match = #{isMatch,jdbcType=VARCHAR},
+      </if>
+      <if test="classRanks != null">
+        class_ranks = #{classRanks,jdbcType=VARCHAR},
+      </if>
+      <if test="matchSubject != null">
+        match_subject = #{matchSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="eSchoolId != null">
+        e_school_id = #{eSchoolId,jdbcType=BIGINT},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNum != null">
+        student_num = #{studentNum,jdbcType=VARCHAR},
+      </if>
+      <if test="classNum != null">
+        class_num = #{classNum,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="changedAt != null">
+        changed_at = #{changedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changedBy != null">
+        changed_by = #{changedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        experience = #{experience,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ngc.entity.Student">
+    update e_student
+    set user_id = #{userId,jdbcType=BIGINT},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      is_train = #{isTrain,jdbcType=VARCHAR},
+      train_subject = #{trainSubject,jdbcType=VARCHAR},
+      is_match = #{isMatch,jdbcType=VARCHAR},
+      class_ranks = #{classRanks,jdbcType=VARCHAR},
+      match_subject = #{matchSubject,jdbcType=VARCHAR},
+      e_school_id = #{eSchoolId,jdbcType=BIGINT},
+      real_name = #{realName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      student_num = #{studentNum,jdbcType=VARCHAR},
+      class_num = #{classNum,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      changed_at = #{changedAt,jdbcType=TIMESTAMP},
+      changed_by = #{changedBy,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectAllStudent"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from e_student
+
+  </select>
+  
+</mapper>

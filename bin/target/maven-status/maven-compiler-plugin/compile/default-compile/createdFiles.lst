@@ -1,0 +1,5 @@
+com\ngc\service\StudentService.class
+com\ngc\entity\Student.class
+com\ngc\mapper\StudentMapper.class
+com\ngc\controller\WelcomeController.class
+com\ngc\service\impl\StudentServiceImpl.class

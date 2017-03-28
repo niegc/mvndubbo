@@ -1,0 +1,3 @@
+dGenerator Thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+
+在这里面加入destroy-method="close"  
